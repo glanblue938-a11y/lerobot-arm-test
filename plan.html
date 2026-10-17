@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>6 个月学习计划 · 工业视觉 + 运动控制 + 上位机</title>
+<style>
+:root{
+  color-scheme: light;
+  --page:#f9f9f7;
+  --surface:#fcfcfb;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --muted:#898781;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --border:rgba(11,11,11,.10);
+  --s1:#2a78d6;
+  --s2:#eb6834;
+  --s3:#1baf7a;
+  --s4:#eda100;
+  --good:#0ca30c;
+  --track:#cde2fb;
+  --shadow:0 1px 2px rgba(11,11,11,.04), 0 8px 24px rgba(11,11,11,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --page:#0d0d0d;
+    --surface:#1a1a19;
+    --ink:#f0efec;
+    --ink-2:#c3c2b7;
+    --muted:#898781;
+    --grid:#2c2c2a;
+    --axis:#383835;
+    --border:rgba(255,255,255,.10);
+    --s1:#3987e5;
+    --s2:#d95926;
+    --s3:#199e70;
+    --s4:#c98500;
+    --good:#0ca30c;
+    --track:#184f95;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page:#0d0d0d;
+  --surface:#1a1a19;
+  --ink:#f0efec;
+  --ink-2:#c3c2b7;
+  --muted:#898781;
+  --grid:#2c2c2a;
+  --axis:#383835;
+  --border:rgba(255,255,255,.10);
+  --s1:#3987e5;
+  --s2:#d95926;
+  --s3:#199e70;
+  --s4:#c98500;
+  --good:#0ca30c;
+  --track:#184f95;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+
+/* ---------- header ---------- */
+header{padding:64px 0 32px}
+.eyebrow{
+  font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 12px
+}
+h1{
+  font-size:34px;line-height:1.25;margin:0 0 12px;
+  letter-spacing:-.01em;font-weight:650
+}
+.lede{color:var(--ink-2);margin:0;max-width:62ch;font-size:16px}
+
+.hero{
+  display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;
+  margin:36px 0 8px;padding:28px 32px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;box-shadow:var(--shadow)
+}
+.hero-figure{
+  font-size:64px;line-height:1;font-weight:600;letter-spacing:-.03em;
+  font-variant-numeric:proportional-nums
+}
+.hero-meta{color:var(--ink-2);font-size:14px;padding-bottom:6px}
+.hero-meta b{color:var(--ink);font-weight:600}
+.hero-spacer{flex:1}
+
+/* ---------- sections ---------- */
+section{margin:64px 0 0}
+h2{
+  font-size:21px;margin:0 0 6px;font-weight:650;letter-spacing:-.005em
+}
+h2 .num{
+  color:var(--muted);font-weight:500;margin-right:10px;
+  font-variant-numeric:tabular-nums
+}
+.sub{color:var(--ink-2);margin:0 0 24px;font-size:14.5px;max-width:70ch}
+
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:24px 26px;box-shadow:var(--shadow)
+}
+
+/* ---------- legend ---------- */
+.legend{display:flex;gap:20px;flex-wrap:wrap;margin:0 0 18px;font-size:13px;color:var(--ink-2)}
+.legend i{
+  display:inline-block;width:11px;height:11px;border-radius:3px;
+  margin-right:7px;vertical-align:-1px
+}
+.legend .line{width:16px;height:2px;border-radius:2px;vertical-align:3px}
+
+/* ---------- gantt ---------- */
+.gantt{padding:6px 0 0}
+.gantt-head,.gantt-row{
+  display:grid;grid-template-columns:118px 1fr;align-items:center;gap:14px
+}
+.gantt-head{margin-bottom:6px}
+.track-axis{
+  position:relative;height:22px;
+  border-bottom:1px solid var(--axis)
+}
+.tick{
+  position:absolute;top:0;font-size:11px;color:var(--muted);
+  transform:translateX(-50%);font-variant-numeric:tabular-nums
+}
+.tick::after{
+  content:"";position:absolute;left:50%;top:16px;width:1px;height:6px;
+  background:var(--axis)
+}
+.gantt-row{margin:2px 0}
+.gantt-label{font-size:13px;color:var(--ink-2);text-align:right}
+.track{
+  position:relative;height:30px;
+  background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px);
+  background-size:calc(100% / 6) 100%;
+  background-position:0 0;
+}
+.rail{
+  position:absolute;left:0;right:0;top:14px;height:1px;background:var(--grid)
+}
+.bar{
+  position:absolute;top:5px;height:20px;border-radius:4px;
+  display:flex;align-items:center;
+  padding:0 8px;font-size:11.5px;white-space:nowrap;overflow:hidden;
+  color:#fff;font-weight:500
+}
+.bar.on-light{color:#0b0b0b}
+.milestone-row{margin-top:14px;padding-top:10px;border-top:1px solid var(--grid)}
+.ms{
+  position:absolute;top:-2px;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:2px
+}
+.ms .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--ink);border:2px solid var(--surface);
+  box-shadow:0 0 0 1px var(--ink)
+}
+.ms .txt{font-size:11px;color:var(--ink-2);white-space:nowrap}
+
+/* ---------- stacked ---------- */
+.stack-row{
+  display:grid;grid-template-columns:190px 1fr;align-items:center;
+  gap:14px;margin:8px 0
+}
+.stack-label{font-size:13px;color:var(--ink-2);text-align:right}
+.stack{display:flex;gap:2px;height:24px}
+.seg{
+  border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:500;color:#fff;overflow:hidden;white-space:nowrap
+}
+.seg.on-light{color:#0b0b0b}
+.seg:first-child{border-radius:4px}
+.axis-note{font-size:12px;color:var(--muted);margin-top:10px}
+
+/* ---------- dumbbell ---------- */
+.dumb{width:100%;height:auto;display:block;overflow:visible}
+.dumb text{font-family:inherit}
+
+/* ---------- phases ---------- */
+.phase{
+  margin:40px 0 0;background:var(--surface);
+  border:1px solid var(--border);border-radius:16px;
+  box-shadow:var(--shadow);overflow:hidden
+}
+.phase-head{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:22px 26px;border-bottom:1px solid var(--grid)
+}
+.phase-tag{
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);font-weight:600
+}
+.phase-title{font-size:19px;font-weight:650;margin:0;letter-spacing:-.005em}
+.phase-range{font-size:13px;color:var(--muted);margin-left:auto;font-variant-numeric:tabular-nums}
+.phase-progress{
+  display:flex;align-items:center;gap:12px;margin-top:10px;width:100%;
+  font-size:12.5px;color:var(--ink-2)
+}
+.pbar{
+  flex:1;height:6px;border-radius:99px;background:var(--track);overflow:hidden
+}
+.pfill{
+  height:100%;border-radius:99px;background:var(--s1);
+  transition:width .25s ease;width:0%
+}
+.pnum{font-variant-numeric:tabular-nums;min-width:34px;text-align:right}
+
+/* ---------- weeks ---------- */
+.week{padding:20px 26px;border-bottom:1px solid var(--grid)}
+.week:last-child{border-bottom:0}
+.week-head{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.wk{
+  font-size:12px;font-weight:600;color:var(--muted);
+  font-variant-numeric:tabular-nums;letter-spacing:.04em
+}
+.week-title{font-size:15.5px;font-weight:600;margin:0}
+.done-badge{
+  font-size:11px;color:var(--good);margin-left:auto;
+  display:none;align-items:center;gap:5px
+}
+.done-badge.show{display:flex}
+
+.tasks{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.tasks li{display:flex;gap:10px;align-items:flex-start}
+.tasks input{
+  appearance:none;-webkit-appearance:none;
+  width:16px;height:16px;flex:0 0 16px;margin:4px 0 0;
+  border:1.5px solid var(--axis);border-radius:4px;
+  background:var(--surface);cursor:pointer;position:relative;
+  transition:background .12s ease,border-color .12s ease
+}
+.tasks input:hover{border-color:var(--s1)}
+.tasks input:checked{background:var(--s1);border-color:var(--s1)}
+.tasks input:checked::after{
+  content:"";position:absolute;left:4px;top:1px;
+  width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;
+  transform:rotate(45deg)
+}
+.tasks label{font-size:14px;color:var(--ink-2);cursor:pointer;line-height:1.5}
+.tasks input:checked+label{color:var(--muted);text-decoration:line-through}
+
+.week-meta{
+  margin-top:14px;padding-top:12px;border-top:1px dashed var(--grid);
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;font-size:12.5px
+}
+.meta-k{color:var(--muted)}
+.meta-v{color:var(--ink-2)}
+.week-meta .q{grid-column:1 / -1}
+.week-meta .q .meta-v{color:var(--ink)}
+
+/* ---------- tables ---------- */
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--grid)}
+th{color:var(--muted);font-weight:500;font-size:12px;letter-spacing:.03em}
+td{color:var(--ink-2)}
+td:first-child{color:var(--ink)}
+tr:last-child td{border-bottom:0}
+details{margin-top:16px}
+summary{
+  cursor:pointer;font-size:13px;color:var(--ink-2);
+  padding:8px 0;list-style:none;user-select:none
+}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸ ";color:var(--muted)}
+details[open] summary::before{content:"▾ "}
+
+/* ---------- milestone cards ---------- */
+.ms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.ms-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:18px 20px;box-shadow:var(--shadow)
+}
+.ms-card .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ms-card .t{font-size:15px;font-weight:600;margin:6px 0 4px}
+.ms-card .d{font-size:13px;color:var(--ink-2);margin:0}
+
+/* ---------- callouts ---------- */
+.note{
+  border-left:3px solid var(--s1);padding:2px 0 2px 16px;
+  color:var(--ink-2);font-size:14px;margin:18px 0
+}
+.note b{color:var(--ink)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.kv{display:grid;gap:2px}
+.kv .k{font-size:12px;color:var(--muted)}
+.kv .v{font-size:14px;color:var(--ink-2)}
+
+footer{margin-top:72px;padding-top:24px;border-top:1px solid var(--grid);color:var(--muted);font-size:13px}
+
+/* ---------- controls ---------- */
+.controls{display:flex;gap:10px;margin-left:auto;align-items:center}
+button{
+  font:inherit;font-size:12.5px;padding:7px 14px;border-radius:8px;
+  border:1px solid var(--border);background:var(--surface);color:var(--ink-2);
+  cursor:pointer;transition:border-color .12s ease,color .12s ease
+}
+button:hover{border-color:var(--s1);color:var(--ink)}
+
+@media (max-width:720px){
+  .gantt-label,.stack-label{text-align:left;font-size:12px}
+  .gantt-head,.gantt-row,.stack-row{grid-template-columns:1fr}
+  .gantt-head .track-axis{display:none}
+  .week-meta{grid-template-columns:1fr}
+  .hero-figure{font-size:48px}
+}
+@media print{
+  body{background:#fff}
+  .controls,button{display:none}
+  .card,.phase,.ms-card{box-shadow:none;break-inside:avoid}
+  details{display:block}
+  details>summary{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">6 个月 · 24 周 · 4 阶段</p>
+  <h1>从「纯视觉检测 + 上位机」<br>到「工业视觉 + 运动控制 + 上位机」</h1>
+  <p class="lede">
+    以 D435i、Jetson、SO-101 主从臂为硬件，把视觉检测能力延伸到三维感知、机械臂控制与边缘部署。
+    每个阶段都有可验证的产出，勾选任务会自动保存在本机浏览器里。
+  </p>
+
+  <div class="hero">
+    <div>
+      <div class="hero-figure" id="hero">0%</div>
+      <div class="hero-meta" style="padding-top:6px">总进度</div>
+    </div>
+    <div class="hero-meta">
+      <b id="hero-done">0</b> / <b id="hero-total">0</b> 项已完成<br>
+      每周 10 小时 · 2h 读 + 6h 动手 + 2h 写笔记
+    </div>
+    <div class="hero-spacer"></div>
+    <div class="controls">
+      <button id="theme">切换明暗</button>
+      <button id="reset">重置进度</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 1 起点 ============ -->
+<section>
+  <h2><span class="num">01</span>你的起点</h2>
+  <p class="sub">盘点了 E 盘已有的东西。这份计划不是从零开始，而是把已有能力接到工业场景上。</p>
+
+  <div class="card">
+    <table>
+      <thead><tr><th>资产</th><th>路径 / 状态</th><th>在本计划里的位置</th></tr></thead>
+      <tbody>
+        <tr><td>Intel RealSense D435i</td><td>深度相机，含 IMU</td><td>阶段 1 的传感器，阶段 2 的视觉输入</td></tr>
+        <tr><td>Jetson（8GB）</td><td>型号待确认：Orin Nano / 原版 Nano</td><td>阶段 3 边缘部署</td></tr>
+        <tr><td>RTX 4070 SUPER</td><td>12 GB 显存，CUDA 可用</td><td>训练与重建都在这里</td></tr>
+        <tr><td>SO-101 主从臂</td><td>COM23 从臂 / COM32 主臂，已完成校准</td><td>阶段 2 抓取闭环、lerobot</td></tr>
+        <tr><td>现有视觉栈</td><td>Cognex VisionPro 9.25 + C#</td><td>主线 A / C 的对照与复用</td></tr>
+        <tr><td>librealsense + Depth Quality Tool</td><td><code>E:\3D\Realsense\</code></td><td>第 1 周直接用</td></tr>
+        <tr><td>COLMAP</td><td><code>E:\3D\code\colmap</code></td><td>第 4–6 周、第 20 周位姿求解</td></tr>
+        <tr><td>gsplat + 3dgs_project</td><td><code>E:\3D\code\</code></td><td>阶段 4</td></tr>
+        <tr><td>gauss_gym + IsaacGym</td><td><code>E:\gauss_gym-main</code></td><td>阶段 4 仿真场景（可选）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 2 能力矩阵 ============ -->
+<section>
+  <h2><span class="num">02</span>目标能力矩阵</h2>
+  <p class="sub">横轴是熟练度：0 无基础 · 1 了解概念 · 2 能跟做 · 3 能独立完成 · 4 能设计并带人。</p>
+
+  <div class="card">
+    <div class="legend">
+      <span><i style="background:var(--muted)"></i>现在</span>
+      <span><i style="background:var(--s1)"></i>6 个月后</span>
+    </div>
+    <div id="dumbbell"></div>
+  </div>
+</section>
+
+<!-- ============ 3 时间轴 ============ -->
+<section>
+  <h2><span class="num">03</span>24 周时间轴</h2>
+  <p class="sub">四条主线并行推进。同一行内的色块表示该主线在不同阶段的具体内容。</p>
+
+  <div class="card">
+    <div class="gantt" id="gantt"></div>
+    <details>
+      <summary>表格视图</summary>
+      <table id="gantt-table">
+        <thead><tr><th>主线</th><th>周次</th><th>内容</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 4 时间分配 ============ -->
+<section>
+  <h2><span class="num">04</span>每周时间怎么分</h2>
+  <p class="sub">每周 10 小时的分配比例。阶段 1 只抓视觉，别同时开四条线。</p>
+
+  <div class="card">
+    <div class="legend">
+      <span><i style="background:var(--s1)"></i>视觉</span>
+      <span><i style="background:var(--s2)"></i>运动控制</span>
+      <span><i style="background:var(--s3)"></i>上位机</span>
+      <span><i style="background:var(--s4)"></i>边缘 / AI</span>
+    </div>
+    <div id="stacks"></div>
+    <p class="axis-note">数值为该阶段每周 10 小时中的占比。</p>
+    <details>
+      <summary>表格视图</summary>
+      <table id="stack-table">
+        <thead><tr><th>阶段</th><th>视觉</th><th>运动控制</th><th>上位机</th><th>边缘 / AI</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 5 详细计划 ============ -->
+<section>
+  <h2><span class="num">05</span>逐周任务</h2>
+  <p class="sub">勾选会保存在本机。全部勾完的周会在标题右侧打勾。</p>
+  <div id="phases"></div>
+</section>
+
+<!-- ============ 6 里程碑 ============ -->
+<section>
+  <h2><span class="num">06</span>里程碑</h2>
+  <p class="sub">每个阶段结束前必须通过。过不了就停下补，不要带着问题进入下一阶段。</p>
+  <div class="ms-grid" id="milestones"></div>
+</section>
+
+<!-- ============ 7 原则与禁忌 ============ -->
+<section>
+  <h2><span class="num">07</span>三条不能破的原则</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="kv">
+        <span class="k">原则 1</span>
+        <span class="v"><b>安全层不能省。</b>策略或视觉给出的任何目标位置，都必须经过软限位、位置差值、温度三道检查才能下发。这是你比纯 AI 背景的人强的地方。</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="kv">
+        <span class="k">原则 2</span>
+        <span class="v"><b>每步都有可验证的产出。</b>「看完了教程」不算完成，「做出了一个能量出误差的东西」才算。</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="kv">
+        <span class="k">原则 3</span>
+        <span class="v"><b>合成数据必须有对照实验。</b>只用真实数据做基线，合成数据的价值必须被证明，不能靠感觉。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">08</span>明确不要做的事</h2>
+  <p class="sub">这些不是不重要，是现在做会挤占动手时间。</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>不要</th><th>原因</th></tr></thead>
+      <tbody>
+        <tr><td>一上来就学 ROS2</td><td>你的场景用不上，lerobot 也不用它</td></tr>
+        <tr><td>用 D435i 做尺寸测量</td><td>精度约 1–2 cm @ 1 m，差一个数量级</td></tr>
+        <tr><td>跳过第 1 周的精度实测</td><td>后面所有「能不能做」的判断都失去依据</td></tr>
+        <tr><td>先上 3DGS 做重建</td><td>几何精度不够，且会掩盖基础问题</td></tr>
+        <tr><td>在 Jetson 上 pip install torch</td><td>必须用 NVIDIA 提供的 wheel</td></tr>
+        <tr><td>合成图进测试集</td><td>指标虚高，现场必崩</td></tr>
+        <tr><td>同时学四条主线</td><td>阶段 1 只抓视觉</td></tr>
+        <tr><td>前 12 周看论文</td><td>只需要知道「是什么」，不需要推导</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">09</span>如果只能做三件事</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>优先级</th><th>做什么</th><th>得到什么</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>第 1 周精度实测 + 第 2–3 周点云基础</td><td>对传感器建立可量化的信任</td></tr>
+        <tr><td>2</td><td>第 5–6 周物体重建 + 第 8 周手眼标定</td><td>打通「看见 → 定位」</td></tr>
+        <tr><td>3</td><td>第 10–11 周抓取闭环 + 安全层</td><td>打通「定位 → 动作」</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      这三件事做完，你已具备「工业视觉 + 运动控制」的闭环能力。其余都是锦上添花。
+    </div>
+  </div>
+</section>
+
+<footer>
+  配套文档：<b>ROADMAP.md</b>（总纲）· <b>LEARNING_PLAN.md</b>（lerobot 模组）· <b>3DGS_DEFECT_SYNTHESIS.md</b>（缺陷合成细节）· <b>ENVIRONMENT.md</b>（本机实测记录）<br>
+  进度保存在本机浏览器的 localStorage，换浏览器或清缓存会丢失。
+</footer>
+
+</div>
+
+<script>
+/* ========================================================
+   数据
+   ======================================================== */
+const TRACKS = [
+  {key:'vision', name:'视觉',      varName:'--s1', onLight:false},
+  {key:'motion', name:'运动控制',  varName:'--s2', onLight:true },
+  {key:'host',   name:'上位机',    varName:'--s3', onLight:true },
+  {key:'edge',   name:'边缘 / AI', varName:'--s4', onLight:true },
+];
+
+const GANTT = [
+  {track:'vision', start:1,  end:6,  label:'RGB-D · 点云 · 重建'},
+  {track:'vision', start:7,  end:12, label:'6D 位姿 · 手眼'},
+  {track:'vision', start:13, end:18, label:'检测模型'},
+  {track:'vision', start:19, end:24, label:'3DGS'},
+
+  {track:'motion', start:3,  end:6,  label:'接口梳理'},
+  {track:'motion', start:7,  end:12, label:'抓取闭环 · 安全层'},
+  {track:'motion', start:13, end:18, label:'视觉伺服'},
+  {track:'motion', start:19, end:24, label:'产线验证'},
+
+  {track:'host',   start:1,  end:2,  label:'Python'},
+  {track:'host',   start:5,  end:6,  label:'架构设计'},
+  {track:'host',   start:9,  end:12, label:'数据层'},
+  {track:'host',   start:13, end:18, label:'工业级架构'},
+  {track:'host',   start:19, end:24, label:'交付'},
+
+  {track:'edge',   start:1,  end:2,  label:'环境'},
+  {track:'edge',   start:7,  end:12, label:'lerobot'},
+  {track:'edge',   start:13, end:18, label:'TensorRT'},
+  {track:'edge',   start:19, end:24, label:'综合项目'},
+];
+
+const MILESTONES = [
+  {week:6,  id:'M1', text:'重建一个物体',
+   title:'物体重建',
+   criterion:'模型尺寸误差 < 5 mm；能说出 TSDF 与 COLMAP 各自适用的场景。'},
+  {week:12, id:'M2', text:'看着点云抓取',
+   title:'视觉引导抓取',
+   criterion:'手眼标定误差 < 5 mm；20 次抓取成功率 ≥ 70%；安全层能拦截越界目标。'},
+  {week:18, id:'M3', text:'跑在 Jetson 上',
+   title:'边缘部署',
+   criterion:'至少一个模块跑在 Jetson；端到端 ≥ 10 fps；连续 30 分钟温度稳定。'},
+  {week:24, id:'M4', text:'分拣闭环',
+   title:'工业分拣闭环',
+   criterion:'抓取—检测—分拣全流程跑通；20 次成功率 ≥ 70%；有失效模式分析。'},
+];
+
+const PHASES_MIX = [
+  {name:'阶段 1 · RGB-D 与重建', mix:{vision:60, motion:10, host:10, edge:20}},
+  {name:'阶段 2 · 位姿与闭环',   mix:{vision:40, motion:30, host:15, edge:15}},
+  {name:'阶段 3 · 边缘与架构',   mix:{vision:25, motion:20, host:30, edge:25}},
+  {name:'阶段 4 · 3DGS 与综合',  mix:{vision:30, motion:25, host:20, edge:25}},
+];
+
+const SKILLS = [
+  {name:'2D 视觉检测',      now:4, target:4},
+  {name:'上位机开发',        now:4, target:4},
+  {name:'运动控制 / 限位',   now:3, target:4},
+  {name:'高斯泼溅',          now:1, target:3},
+  {name:'Python',           now:0, target:3},
+  {name:'三维视觉 / 点云',   now:0, target:3},
+  {name:'手眼 / 6D 位姿',    now:0, target:3},
+  {name:'深度学习',          now:0, target:3},
+  {name:'边缘部署',          now:0, target:3},
+  {name:'示教学习',          now:0, target:3},
+];
+
+const PHASE_INFO = [
+  {id:1, name:'RGB-D 与三维重建', range:'第 1–6 周', weeks:[1,2,3,4,5,6]},
+  {id:2, name:'位姿与机械臂闭环', range:'第 7–12 周', weeks:[7,8,9,10,11,12]},
+  {id:3, name:'边缘部署与上位机架构', range:'第 13–18 周', weeks:[13,14,15,16,17,18]},
+  {id:4, name:'3DGS 与综合项目', range:'第 19–24 周', weeks:[19,20,21,22,23,24]},
+];
+
+const WEEKS = [
+  {n:1, phase:1, title:'装备体检与精度基线',
+   tasks:[
+     '确认 D435i 走 USB 3.0，彩色和深度能同时出图',
+     '用 Depth Quality Tool 看实时深度质量',
+     '准备标定物：用卡尺量过的方块或块规',
+     '0.3 / 0.5 / 1.0 / 1.5 / 2.0 m 各测 10 次，记录误差',
+     '补测 45° 斜面和金属反光件各一组',
+   ],
+   output:'一张「距离—误差」表',
+   check:'1 m 处误差是多少？这个精度能做什么、不能做什么？'},
+
+  {n:2, phase:1, title:'Python 与点云入门',
+   tasks:[
+     '安装 pyrealsense2 / open3d（装不上就换 Python 3.10 环境，别卡住）',
+     '深度图转点云，保存为 .ply',
+     '用 Open3D 打开并环绕查看',
+     '理解内参：像素 → 射线 → 深度',
+   ],
+   output:'一个能保存点云的脚本',
+   check:'一个像素对应空间中的什么？'},
+
+  {n:3, phase:1, title:'点云处理与量测',
+   tasks:[
+     '加载 .ply，做体素降采样',
+     'RANSAC 分割桌面平面',
+     '欧式聚类分离出物体',
+     '量出物体尺寸，和卡尺读数对比',
+   ],
+   output:'一个物体尺寸测量脚本',
+   check:'体素大小如何影响尺寸测量？'},
+
+  {n:4, phase:1, title:'良品采集',
+   tasks:[
+     '搭简易转台或手持绕拍，拍 60~150 张',
+     '锁定曝光和白平衡',
+     '背景换成白纸或纯色布',
+     '检查相邻图像重叠度 ≥ 70%',
+     '覆盖顶部、侧面、斜面',
+   ],
+   output:'一组可用于重建的图像',
+   check:'为什么不能开自动曝光？'},
+
+  {n:5, phase:1, title:'TSDF 重建',
+   tasks:[
+     '确定位姿来源：转台角度或 ICP 配准',
+     'Open3D TSDF 融合',
+     'Marching Cubes 生成网格',
+     '纹理映射，导出 .obj / .ply',
+   ],
+   output:'一个带纹理的物体模型',
+   check:'体素大小和深度噪声是什么关系？'},
+
+  {n:6, phase:1, title:'对照与 M1 验收',
+   tasks:[
+     '用同一组数据跑一遍 COLMAP',
+     '对比 TSDF 与 COLMAP 的几何和纹理',
+     '记录两种方法的耗时',
+     '写下各自适用的场景',
+     'M1：模型尺寸误差 < 5 mm',
+   ],
+   output:'一份方法对比结论 + 一个可用模型',
+   check:'为什么摄影测量在弱纹理表面会失败？'},
+
+  {n:7, phase:2, title:'相机内参标定',
+   tasks:[
+     '打印棋盘格，拍 20 张以上',
+     'cv2.calibrateCamera',
+     '重投影误差 < 0.5 px',
+     '保存内参和畸变系数',
+   ],
+   output:'一份内参文件',
+   check:'内参和手眼矩阵分别解决什么问题？'},
+
+  {n:8, phase:2, title:'手眼标定（eye-in-hand）',
+   tasks:[
+     '相机装在末端，采集 15 组以上「末端位姿 + 标定板位姿」',
+     'cv2.calibrateHandEye',
+     '把一个已知点转到基座坐标验证',
+     '误差 < 5 mm 才继续往下走',
+   ],
+   output:'手眼矩阵',
+   check:'没有手眼矩阵会怎样？'},
+
+  {n:9, phase:2, title:'6D 位姿估计',
+   tasks:[
+     '用第 6 周的模型当模板',
+     'Open3D PPF 配准',
+     '把位姿可视化（坐标轴叠加）',
+     '换几个摆放位置测试鲁棒性',
+   ],
+   output:'位姿估计脚本',
+   check:'6D 位姿和 2D 位置差在哪？'},
+
+  {n:10, phase:2, title:'抓取点与安全层',
+   tasks:[
+     '位姿 → 抓取点 + 接近方向',
+     '写简单轨迹：接近 → 下降 → 闭合 → 抬起',
+     '安全包装器：软限位 / 位置差值 / 温度',
+     '故意给一个越界目标，验证被拦截',
+   ],
+   output:'可复用的安全层模块',
+   check:'哪一条安全规则是你绝对不删的？'},
+
+  {n:11, phase:2, title:'抓取闭环',
+   tasks:[
+     '视觉服务进程：拍图 → 点云 → 位姿',
+     '运动服务进程：位姿 → 运动',
+     '两个进程通信',
+     '端到端跑通一次抓取',
+   ],
+   output:'能抓起一个随机摆放的物体',
+   check:'失败时怎么判断是视觉错了还是运动错了？'},
+
+  {n:12, phase:2, title:'lerobot 模块与 M2 验收',
+   tasks:[
+     '按 LEARNING_PLAN 跑通遥操作',
+     '采集 50 条示教数据',
+     '回放验证',
+     '（可选）训练一版 ACT',
+     'M2：抓取 20 次，成功率 ≥ 70%',
+   ],
+   output:'数据集 + 成功率记录',
+   check:'什么任务该用几何方法，什么该用学习策略？'},
+
+  {n:13, phase:3, title:'Jetson 环境',
+   tasks:[
+     '确认 JetPack / CUDA / TensorRT 版本',
+     '安装 NVIDIA 提供的 PyTorch',
+     '跑一个最小推理，记录耗时',
+     '测空闲和满载温度',
+   ],
+   output:'可用的 Jetson 推理环境',
+   check:'为什么不能直接 pip install torch？'},
+
+  {n:14, phase:3, title:'ONNX 导出',
+   tasks:[
+     '选一个检测模型',
+     '导出 ONNX，固定输入尺寸',
+     '用 onnxruntime 验证输出一致',
+     '记录与 PyTorch 的数值差异',
+   ],
+   output:'可用的 .onnx',
+   check:'动态 batch 为什么会影响导出？'},
+
+  {n:15, phase:3, title:'TensorRT 转换',
+   tasks:[
+     '用 trtexec 或 Python API 转 engine',
+     'FP16 和 INT8 各跑一次',
+     '测 P50 / P99 延迟',
+     '对比精度损失',
+   ],
+   output:'TensorRT engine + 延迟表',
+   check:'FP16 掉精度时怎么定位问题？'},
+
+  {n:16, phase:3, title:'端到端性能',
+   tasks:[
+     '采集 + 推理 + 后处理串起来',
+     '测端到端帧率',
+     '用 tegrastats 记录功耗和温度',
+     '找出瓶颈在哪一段',
+   ],
+   output:'一张性能分解表',
+   check:'瓶颈在采集还是推理？怎么判断？'},
+
+  {n:17, phase:3, title:'上位机架构',
+   tasks:[
+     '拆成视觉 / 运动 / UI 三个进程',
+     '定义进程间协议（gRPC 或本地 socket）',
+     '加日志和追溯字段',
+     '模拟一个服务崩溃，看系统行为',
+   ],
+   output:'三进程架构原型',
+   check:'为什么要拆进程？'},
+
+  {n:18, phase:3, title:'M3 验收',
+   tasks:[
+     '至少一个模块跑在 Jetson 上',
+     '端到端 ≥ 10 fps',
+     '连续跑 30 分钟无异常',
+     '记录 CPU / GPU / 温度曲线',
+   ],
+   output:'边缘部署报告',
+   check:'30 分钟里温度稳定吗？'},
+
+  {n:19, phase:4, title:'3DGS 原理',
+   tasks:[
+     '理解高斯表示和可微光栅化',
+     '复盘已有的 3dgs_project',
+     '说清楚它优化的是什么',
+     '说清楚它不能做什么',
+   ],
+   output:'一页原理笔记',
+   check:'为什么它不能用来测量？'},
+
+  {n:20, phase:4, title:'3DGS 训练',
+   tasks:[
+     '新拍一组数据（要求同第 4 周）',
+     '用 COLMAP 求位姿',
+     'gsplat 训练 30k 步',
+     'PSNR 达到 25~35 dB',
+   ],
+   output:'一个 3DGS 模型',
+   check:'哪些区域渲染崩了？为什么？'},
+
+  {n:21, phase:4, title:'渲染与深度',
+   tasks:[
+     '半球采样 500 个以上位姿',
+     '批量渲染 RGB',
+     '用 RGB+ED 模式输出深度',
+     '深度转法向',
+   ],
+   output:'renders/rgb + renders/depth',
+   check:'深度噪声有多大？'},
+
+  {n:22, phase:4, title:'缺陷注入',
+   tasks:[
+     '从真实缺陷里抠 20 个以上 patch',
+     '实现带光照补偿的合成函数',
+     '自动生成 mask 标注',
+     '人工看 50 张，判断「假不假」',
+   ],
+   output:'1000 张合成缺陷图 + 标注',
+   check:'哪一类缺陷最假？'},
+
+  {n:23, phase:4, title:'对照实验',
+   tasks:[
+     'A 组：只用真实数据',
+     'B 组：真实 + 传统增强',
+     'C 组：真实 + 3DGS 合成',
+     '只在真实测试集上评估',
+     '写结论：值不值得继续',
+   ],
+   output:'对照实验报告',
+   check:'C 比 B 好多少？值得这个成本吗？'},
+
+  {n:24, phase:4, title:'综合项目 M4',
+   tasks:[
+     '料箱 → D435i → 点云 → 位姿 → 抓取',
+     '放到检测位 → 判定 OK / NG',
+     '分拣到不同区域',
+     '记录全过程数据',
+     'M4：20 次成功率 ≥ 70%',
+     '写失效模式分析',
+   ],
+   output:'一个能演示的完整闭环',
+   check:'失败最多的环节是哪一个？'},
+];
+
+/* ========================================================
+   渲染：能力矩阵（dumbbell）
+   ======================================================== */
+function renderDumbbell(){
+  const el = document.getElementById('dumbbell');
+  const W = 860, rowH = 34, padTop = 26, padBottom = 14;
+  const labelW = 170, axisW = W - labelW - 24;
+  const H = padTop + SKILLS.length * rowH + padBottom;
+  const x = v => labelW + (v / 4) * axisW;
+
+  let s = `<svg class="dumb" viewBox="0 0 ${W} ${H}" role="img" aria-label="能力矩阵：现在与 6 个月后的对比">`;
+
+  // grid
+  for(let i=0;i<=4;i++){
+    const gx = x(i);
+    s += `<line x1="${gx}" y1="${padTop-10}" x2="${gx}" y2="${H-padBottom}" stroke="var(--grid)" stroke-width="1"/>`;
+    s += `<text x="${gx}" y="${padTop-16}" text-anchor="middle" font-size="11" fill="var(--muted)">${i}</text>`;
+  }
+
+  SKILLS.forEach((sk, i) => {
+    const cy = padTop + i * rowH + rowH/2;
+    const x1 = x(sk.now), x2 = x(sk.target);
+    s += `<text x="${labelW-16}" y="${cy+4}" text-anchor="end" font-size="13" fill="var(--ink-2)">${sk.name}</text>`;
+    s += `<line x1="${x1}" y1="${cy}" x2="${x2}" y2="${cy}" stroke="var(--grid)" stroke-width="2" stroke-linecap="round"/>`;
+    // current
+    s += `<circle cx="${x1}" cy="${cy}" r="5" fill="var(--muted)" stroke="var(--surface)" stroke-width="2"/>`;
+    // target
+    s += `<circle cx="${x2}" cy="${cy}" r="6" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>`;
+  });
+
+  s += `</svg>`;
+  el.innerHTML = s;
+}
+
+/* ========================================================
+   渲染：甘特图
+   ======================================================== */
+function renderGantt(){
+  const el = document.getElementById('gantt');
+  const W = 24;
+  const pct = w => (w / W) * 100;
+
+  let html = '';
+
+  // 顶部刻度
+  html += `<div class="gantt-head"><div></div><div class="track-axis">`;
+  for(let w=4; w<=24; w+=4){
+    html += `<span class="tick" style="left:${pct(w)}%">${w}</span>`;
+  }
+  html += `</div></div>`;
+
+  // 每一条主线
+  TRACKS.forEach(t => {
+    html += `<div class="gantt-row"><div class="gantt-label">${t.name}</div><div class="track"><div class="rail"></div>`;
+    GANTT.filter(g => g.track === t.key).forEach(g => {
+      const left = pct(g.start - 1);
+      const width = pct(g.end - g.start + 1);
+      const cls = t.onLight ? 'bar on-light' : 'bar';
+      html += `<div class="${cls}" style="left:calc(${left}% + 1px);width:calc(${width}% - 2px);background:var(${t.varName})">${g.label}</div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  // 里程碑
+  html += `<div class="gantt-row milestone-row"><div class="gantt-label">里程碑</div><div class="track"><div class="rail"></div>`;
+  MILESTONES.forEach(m => {
+    html += `<div class="ms" style="left:${pct(m.week)}%">
+      <div class="dot"></div><div class="txt">${m.id}</div></div>`;
+  });
+  html += `</div></div>`;
+
+  el.innerHTML = html;
+
+  // 表格视图
+  const tb = document.querySelector('#gantt-table tbody');
+  tb.innerHTML = GANTT.map(g => {
+    const t = TRACKS.find(t => t.key === g.track);
+    return `<tr><td>${t.name}</td><td>第 ${g.start}–${g.end} 周</td><td>${g.label}</td></tr>`;
+  }).join('');
+}
+
+/* ========================================================
+   渲染：时间分配
+   ======================================================== */
+function renderStacks(){
+  const el = document.getElementById('stacks');
+  let html = '';
+  PHASES_MIX.forEach(p => {
+    html += `<div class="stack-row"><div class="stack-label">${p.name}</div><div class="stack">`;
+    TRACKS.forEach(t => {
+      const v = p.mix[t.key];
+      const cls = t.onLight ? 'seg on-light' : 'seg';
+      const txt = v >= 12 ? v + '%' : '';
+      html += `<div class="${cls}" style="width:${v}%;background:var(${t.varName})">${txt}</div>`;
+    });
+    html += `</div></div>`;
+  });
+  el.innerHTML = html;
+
+  const tb = document.querySelector('#stack-table tbody');
+  tb.innerHTML = PHASES_MIX.map(p =>
+    `<tr><td>${p.name}</td>${TRACKS.map(t => `<td>${p.mix[t.key]}%</td>`).join('')}</tr>`
+  ).join('');
+}
+
+/* ========================================================
+   渲染：里程碑卡片
+   ======================================================== */
+function renderMilestones(){
+  const el = document.getElementById('milestones');
+  el.innerHTML = MILESTONES.map(m => `
+    <div class="ms-card">
+      <div class="k">${m.id} · 第 ${m.week} 周</div>
+      <div class="t">${m.title}</div>
+      <p class="d">${m.criterion}</p>
+    </div>
+  `).join('');
+}
+
+/* ========================================================
+   渲染：逐周任务
+   ======================================================== */
+const STORE_KEY = 'industrial-vision-plan-v1';
+let state = {};
+try{ state = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); }catch(e){ state = {}; }
+
+function taskId(week, idx){ return `w${week}t${idx}`; }
+
+function renderPhases(){
+  const root = document.getElementById('phases');
+  let html = '';
+
+  PHASE_INFO.forEach(p => {
+    html += `<div class="phase" data-phase="${p.id}">
+      <div class="phase-head">
+        <div>
+          <div class="phase-tag">阶段 ${p.id}</div>
+          <h3 class="phase-title">${p.name}</h3>
+        </div>
+        <div class="phase-range">${p.range}</div>
+        <div class="phase-progress">
+          <div class="pbar"><div class="pfill" data-fill="${p.id}"></div></div>
+          <span class="pnum" data-num="${p.id}">0%</span>
+        </div>
+      </div>`;
+
+    p.weeks.forEach(wn => {
+      const w = WEEKS.find(x => x.n === wn);
+      if(!w) return;
+      html += `<div class="week" data-week="${w.n}">
+        <div class="week-head">
+          <span class="wk">W${String(w.n).padStart(2,'0')}</span>
+          <h4 class="week-title">${w.title}</h4>
+          <span class="done-badge" data-badge="${w.n}">✓ 本周完成</span>
+        </div>
+        <ul class="tasks">`;
+
+      w.tasks.forEach((task, idx) => {
+        const id = taskId(w.n, idx);
+        const checked = state[id] ? 'checked' : '';
+        html += `<li>
+          <input type="checkbox" id="${id}" data-task="${id}" data-phase="${w.phase}" data-week="${w.n}" ${checked}>
+          <label for="${id}">${task}</label>
+        </li>`;
+      });
+
+      html += `</ul>
+        <div class="week-meta">
+          <div><span class="meta-k">产出 · </span><span class="meta-v">${w.output}</span></div>
+          <div class="q"><span class="meta-k">自检 · </span><span class="meta-v">${w.check}</span></div>
+        </div>
+      </div>`;
+    });
+
+    html += `</div>`;
+  });
+
+  root.innerHTML = html;
+}
+
+/* ========================================================
+   进度
+   ======================================================== */
+function updateProgress(){
+  const boxes = [...document.querySelectorAll('input[data-task]')];
+  const total = boxes.length;
+  const done = boxes.filter(b => b.checked).length;
+  const pct = total ? Math.round(done / total * 100) : 0;
+
+  document.getElementById('hero').textContent = pct + '%';
+  document.getElementById('hero-done').textContent = done;
+  document.getElementById('hero-total').textContent = total;
+
+  PHASE_INFO.forEach(p => {
+    const pb = boxes.filter(b => b.dataset.phase === String(p.id));
+    const d = pb.filter(b => b.checked).length;
+    const pp = pb.length ? Math.round(d / pb.length * 100) : 0;
+    const fill = document.querySelector(`[data-fill="${p.id}"]`);
+    const num = document.querySelector(`[data-num="${p.id}"]`);
+    if(fill) fill.style.width = pp + '%';
+    if(num) num.textContent = pp + '%';
+  });
+
+  document.querySelectorAll('.week[data-week]').forEach(weekEl => {
+    const wn = weekEl.dataset.week;
+    const wb = [...weekEl.querySelectorAll('input[data-task]')];
+    const all = wb.length > 0 && wb.every(b => b.checked);
+    const badge = weekEl.querySelector(`[data-badge="${wn}"]`);
+    if(badge) badge.classList.toggle('show', all);
+  });
+}
+
+function bind(){
+  document.querySelectorAll('input[data-task]').forEach(box => {
+    box.addEventListener('change', () => {
+      const id = box.dataset.task;
+      if(box.checked) state[id] = true; else delete state[id];
+      try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+      updateProgress();
+    });
+  });
+}
+
+/* ========================================================
+   主题 / 重置
+   ======================================================== */
+function initTheme(){
+  const saved = localStorage.getItem('plan-theme');
+  if(saved) document.documentElement.setAttribute('data-theme', saved);
+}
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('plan-theme', next);
+}
+
+/* ========================================================
+   启动
+   ======================================================== */
+initTheme();
+renderDumbbell();
+renderGantt();
+renderStacks();
+renderPhases();
+renderMilestones();
+bind();
+updateProgress();
+
+document.getElementById('theme').addEventListener('click', toggleTheme);
+document.getElementById('reset').addEventListener('click', () => {
+  if(!confirm('确定要清空所有勾选进度吗？')) return;
+  state = {};
+  try{ localStorage.removeItem(STORE_KEY); }catch(e){}
+  document.querySelectorAll('input[data-task]').forEach(b => b.checked = false);
+  updateProgress();
+});
+</script>
+</body>
+</html>

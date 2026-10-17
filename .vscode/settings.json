@@ -1,0 +1,6 @@
+{
+  // 本项目所有 Python 都用这个 venv（lerobot + pyrealsense2 + torch 都装在这里）
+  // 不要用系统 Python C:\Users\Administrator\AppData\Local\Programs\Python\Python312
+  "python.defaultInterpreterPath": "E:\\lerobot-env\\Scripts\\python.exe",
+  "python.terminal.activateEnvironment": true
+}

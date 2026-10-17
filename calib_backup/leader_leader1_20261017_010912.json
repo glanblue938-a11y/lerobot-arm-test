@@ -1,0 +1,139 @@
+{
+  "arm": "leader",
+  "id": "leader1",
+  "port": "COM32",
+  "backed_up_at": "2026-10-17T01:09:12",
+  "note": "从舵机 EEPROM 只读读出。Homing_Offset=地址31, Min_Position_Limit=地址9, Max_Position_Limit=地址11, Min/Max_Voltage_Limit=地址15/14",
+  "lerobot_calibration": {
+    "shoulder_pan": {
+      "id": 1,
+      "drive_mode": 0,
+      "homing_offset": -285,
+      "range_min": 748,
+      "range_max": 3125
+    },
+    "shoulder_lift": {
+      "id": 2,
+      "drive_mode": 0,
+      "homing_offset": -154,
+      "range_min": 1658,
+      "range_max": 4034
+    },
+    "elbow_flex": {
+      "id": 3,
+      "drive_mode": 0,
+      "homing_offset": 609,
+      "range_min": 867,
+      "range_max": 3080
+    },
+    "wrist_flex": {
+      "id": 4,
+      "drive_mode": 0,
+      "homing_offset": 712,
+      "range_min": 899,
+      "range_max": 2936
+    },
+    "wrist_roll": {
+      "id": 5,
+      "drive_mode": 0,
+      "homing_offset": 1707,
+      "range_min": 0,
+      "range_max": 4095
+    },
+    "gripper": {
+      "id": 6,
+      "drive_mode": 0,
+      "homing_offset": -129,
+      "range_min": 1813,
+      "range_max": 3015
+    }
+  },
+  "voltage_window": {
+    "shoulder_pan": {
+      "min": 40,
+      "max": 120
+    },
+    "shoulder_lift": {
+      "min": 40,
+      "max": 80
+    },
+    "elbow_flex": {
+      "min": 40,
+      "max": 120
+    },
+    "wrist_flex": {
+      "min": 40,
+      "max": 120
+    },
+    "wrist_roll": {
+      "min": 40,
+      "max": 120
+    },
+    "gripper": {
+      "min": 40,
+      "max": 120
+    }
+  },
+  "extra_registers": {
+    "shoulder_pan": {
+      "Present_Position": 1380,
+      "Present_Voltage": 126,
+      "Present_Temperature": 32,
+      "Min_Voltage_Limit": 40,
+      "Max_Voltage_Limit": 120,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "shoulder_lift": {
+      "Present_Position": 1669,
+      "Present_Voltage": 126,
+      "Present_Temperature": 32,
+      "Min_Voltage_Limit": 40,
+      "Max_Voltage_Limit": 80,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "elbow_flex": {
+      "Present_Position": 3074,
+      "Present_Voltage": 125,
+      "Present_Temperature": 32,
+      "Min_Voltage_Limit": 40,
+      "Max_Voltage_Limit": 120,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "wrist_flex": {
+      "Present_Position": 906,
+      "Present_Voltage": 125,
+      "Present_Temperature": 32,
+      "Min_Voltage_Limit": 40,
+      "Max_Voltage_Limit": 120,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "wrist_roll": {
+      "Present_Position": 3006,
+      "Present_Voltage": 124,
+      "Present_Temperature": 32,
+      "Min_Voltage_Limit": 40,
+      "Max_Voltage_Limit": 120,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "gripper": {
+      "Present_Position": 1830,
+      "Present_Voltage": 125,
+      "Present_Temperature": 33,
+      "Min_Voltage_Limit": 40,
+      "Max_Voltage_Limit": 120,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    }
+  }
+}

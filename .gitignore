@@ -1,0 +1,16 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 采集输出（可由 vision/01_capture_rgbd.py 重新生成）
+# 只保留内参文件，它是标定结果，不该丢
+vision/captures/*
+!vision/captures/intrinsics.json
+
+# 临时文件
+*.tmp
+Thumbs.db
+.DS_Store

@@ -1,0 +1,101 @@
+{
+  "arm": "follower",
+  "id": "follower1",
+  "port": "COM23",
+  "backed_up_at": "2026-10-17T01:05:19",
+  "note": "从舵机 EEPROM 只读读出。Homing_Offset=地址31, Min_Position_Limit=地址9, Max_Position_Limit=地址11",
+  "lerobot_calibration": {
+    "shoulder_pan": {
+      "id": 1,
+      "drive_mode": 0,
+      "homing_offset": -358,
+      "range_min": 840,
+      "range_max": 3258
+    },
+    "shoulder_lift": {
+      "id": 2,
+      "drive_mode": 0,
+      "homing_offset": -69,
+      "range_min": 869,
+      "range_max": 3098
+    },
+    "elbow_flex": {
+      "id": 3,
+      "drive_mode": 0,
+      "homing_offset": 437,
+      "range_min": 983,
+      "range_max": 3188
+    },
+    "wrist_flex": {
+      "id": 4,
+      "drive_mode": 0,
+      "homing_offset": 175,
+      "range_min": 889,
+      "range_max": 3133
+    },
+    "wrist_roll": {
+      "id": 5,
+      "drive_mode": 0,
+      "homing_offset": 527,
+      "range_min": 0,
+      "range_max": 4095
+    },
+    "gripper": {
+      "id": 6,
+      "drive_mode": 0,
+      "homing_offset": -23,
+      "range_min": 1288,
+      "range_max": 2713
+    }
+  },
+  "extra_registers": {
+    "shoulder_pan": {
+      "Present_Position": 2006,
+      "Present_Voltage": 125,
+      "Present_Temperature": 33,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "shoulder_lift": {
+      "Present_Position": 2392,
+      "Present_Voltage": 125,
+      "Present_Temperature": 31,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "elbow_flex": {
+      "Present_Position": 2353,
+      "Present_Voltage": 125,
+      "Present_Temperature": 32,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "wrist_flex": {
+      "Present_Position": 1981,
+      "Present_Voltage": 125,
+      "Present_Temperature": 34,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "wrist_roll": {
+      "Present_Position": 1812,
+      "Present_Voltage": 125,
+      "Present_Temperature": 33,
+      "Max_Torque_Limit": 1000,
+      "Torque_Limit": 1000,
+      "Torque_Enable": 0
+    },
+    "gripper": {
+      "Present_Position": 1284,
+      "Present_Voltage": 125,
+      "Present_Temperature": 34,
+      "Max_Torque_Limit": 500,
+      "Torque_Limit": 500,
+      "Torque_Enable": 0
+    }
+  }
+}
